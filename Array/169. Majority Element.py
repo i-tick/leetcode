@@ -21,7 +21,19 @@ class Solution:
         maxc = 0
         res = -1
         for n in nums:
-            hash[n] = 1+hash.get(n,0)
+            if n in hash:
+                hash[n] = 1+hash[n]
+            else:
+                hash[n] = 0
             res = n if hash[n]>maxc else res
             maxc = max(hash[n],maxc)
         return res
+    
+
+
+class Solution:
+    def majorityElement(self, nums: List[int]) -> int:
+        c = Counter(nums)
+        for i in c:
+            if c[i]>math.floor(len(nums)/2):
+                return i

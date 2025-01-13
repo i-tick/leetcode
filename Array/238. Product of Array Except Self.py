@@ -1,28 +1,28 @@
 class Solution:
     def productExceptSelf(self, nums: List[int]) -> List[int]:
-        # Time O(n) 
-        # space O(n)
-        count_z = 0
-        product = 1
-        for i in nums:
-            if i==0:
-                count_z +=1
-            else:
-                product*=i
+        # # Time O(n) 
+        # # space O(n)
+        # count_z = 0
+        # product = 1
+        # for i in nums:
+        #     if i==0:
+        #         count_z +=1
+        #     else:
+        #         product*=i
         
-        if count_z>1:
-            return [0]*len(nums)
+        # if count_z>1:
+        #     return [0]*len(nums)
 
-        output = []
-        for i in nums:
-            if i==0:
-                output.append(product)
-            else:
-                if count_z == 1:
-                    output.append(0)
-                else: 
-                    output.append(product//i)
-        return output
+        # output = []
+        # for i in nums:
+        #     if i==0:
+        #         output.append(product)
+        #     else:
+        #         if count_z == 1:
+        #             output.append(0)
+        #         else: 
+        #             output.append(product//i)
+        # return output
 
 
 
