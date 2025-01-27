@@ -10,7 +10,7 @@ class Solution:
         l1 = headA
         l2 = headB
 
-        # do rotation of list 
+        # do complete traversal of list and then start with from another head
         while l1!=l2:
             if l1:
                 l1 = l1.next

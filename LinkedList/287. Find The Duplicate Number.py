@@ -14,4 +14,8 @@ class Solution:
             s2 = nums[s2]
             if s==s2:
                 return s
-        
+        # hash = set()
+        # for i in nums:
+        #     if i in hash:
+        #         return i
+        #     hash.add(i)
