@@ -28,5 +28,42 @@ class Solution:
             if level:
                 res.append(level[-1])
         return res
+    
+
+
+
+
+
+        # if not root:
+        #     return []
+
+        # q = deque()
+        # q.append(root)
+        # q.append(None)
+        # res =[]
+
+        # while q:
+        #     node = q.popleft()
+        #     if node:
+        #         res.append(node.val)
+        #         if node.left:
+        #             q.append(node.left)
+        #         if node.right:
+        #             q.append(node.right)
+        #     else:
+        #         if len(q)==0:
+        #             res.append(None)
+        #             break
+        #         q.append(None)
+        #         res.append(None)
+
+        # levels = []
+        # for i in range(len(res)):
+        #     if res[i]==None:
+        #         levels.append(res[i-1])
+        # return levels         
+
+
+
 
         

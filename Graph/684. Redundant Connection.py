@@ -6,9 +6,8 @@ class Solution:
         def find(n):
             p = par[n]
 
-            while p!=par[p]:
-                par[p] = par[par[p]]
-                p = par[p]
+            if p!=n:
+                return find(p)
             return p
 
         def union(n1,n2):
@@ -17,13 +16,7 @@ class Solution:
 
             if p1==p2:
                 return False
-
-            if rank[n1]>=rank[n2]:
-                par[p2]=p1
-                rank[n1]+=rank[n2]
-            else:
-                par[p1]=p2
-                rank[2]+=rank[n1]
+            par[max(p1,p2)]=min(p1,p2)
 
             return True
 

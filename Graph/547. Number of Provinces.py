@@ -1,47 +1,31 @@
 class Solution:
     def findCircleNum(self, isConnected: List[List[int]]) -> int:
-        edges = set()
+        edges = defaultdict(list)
         for i in range(len(isConnected)):
-            for j in range(len(isConnected[0])):
-                if i!=j and (i+1,j+1) not in edges and (j+1,i+1) not in edges and isConnected[i][j]:
-                    edges.add((i+1,j+1))
-        edges = list(edges)
+            for j in range(i,len(isConnected[0])):
+                if i!=j and isConnected[i][j]:
+                    edges[i+1].append(j+1)
+                    edges[j+1].append(i+1)
+        print(edges)
         n = len(isConnected)
-        
-        rank = [1]*(n+1)
-        par = [i for i in range(n+1)]
-        
+        vis = set()
 
-        def find(n):
-            p = par[n]
+        def dfs(cur,par):
+            if cur in vis:
+                return 
 
-            while p!=par[p]:
-                par[p] = par[par[p]]
-                p = par[p]
-            return p
-
-        def union(n1,n2):
-            p1,p2 = find(n1),find(n2)
-
-            if p1==p2:
-                return 0
-
-            if rank[p1]>=rank[p2]:
-                par[p2] = p1
-                rank[p1]+=rank[p2]
-            else:
-                par[p1] = p2
-                rank[p2] += rank[p1]
-            
-            return 1
-
-        res = n
-
-        for i,j in edges:
-            res -= union(i,j)
-        print(par)
-        return res
-
-            
+            vis.add(cur)
+            for nei in edges[cur]:
+                if nei==par:
+                    continue
+                dfs(nei,cur)
+            return 
+        c = 0 
+        for i in range(1,n+1):
+            if i not in vis:
+                dfs(i,-1)
+                c+=1
+        return c
 
         
+    
