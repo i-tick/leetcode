@@ -1,17 +1,16 @@
-class Solution(object):
-    def findLHS(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: int
-        """
-        counter = dict(Counter(nums))
-        l = list(counter.keys())
-        l.sort()
-        print(l)
-        res = 0
-        for i in range(1,len(l)):
-            if abs(l[i] - l[i-1]) ==1:
-                res = max(res,counter[l[i]]+counter[l[i-1]])
-        return res
+from typing import List
+
+
+class Solution:
+    def findMaxAverage(self, nums: List[int], k: int) -> float:
+        sub_array_sum = sum(nums[:k])
+        avg = sub_array_sum/k
+        for i in range(k,len(nums)):
+            sub_array_sum += nums[i]-nums[i-k]
+            avg = max(avg, sub_array_sum/k)
+        return avg
+    # Time Complexity: O(n)
+    # Space Complexity: O(1)
+
 
         

@@ -19,26 +19,26 @@ class Solution:
         inorder(root)
         return res
         
-
         # res = []
-        # def inorder(root):
-        #     if not root:
-        #         return None
-        #     cur = root
-        #     while cur:
-        #         if cur.left is None:
+        # if not root:
+        #     return []
+        # cur = root
+        # while cur:
+        #     if cur.left is None:
+        #         res.append(cur.val)
+        #         cur = cur.right
+        #     else:
+        #         prev = cur.left
+        #         while prev.right is not None and prev.right!=cur:
+        #             prev = prev.right
+        #         if prev.right==None:
+        #             prev.right = cur
+        #             cur = cur.left
+        #         else:
+        #             prev.right = None
         #             res.append(cur.val)
         #             cur = cur.right
-        #         else:
-        #             prev = cur.left
-        #             while prev.right is not None and prev.right!=cur:
-        #                 prev = prev.right
-        #             if prev.right==None:
-        #                 prev.right = cur
-        #                 cur = cur.left
-        #             else:
-        #                 prev.right = None
-        #                 res.append(cur.val)
-        #                 cur = cur.right
-        # inorder(root)
+    
         # return res
+
+        # Time complexity: O(n)
