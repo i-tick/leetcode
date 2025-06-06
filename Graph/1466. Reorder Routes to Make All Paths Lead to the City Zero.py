@@ -1,29 +1,25 @@
+from collections import defaultdict
+from typing import List
+
+
 class Solution:
     def minReorder(self, n: int, connections: List[List[int]]) -> int:
 
-        edges = set()
         vis = set()
         neighbors = defaultdict(list)
         for a,b in connections:
-            edges.add((a,b))
-            neighbors[a].append(b)
-            neighbors[b].append(a)
+            neighbors[a].append((b,1))
+            neighbors[b].append((a,0))
 
-        q = deque()
-        q.append(0)
-        c = 0
-        while q:
-            for _ in range(len(q)):
-                x = q.popleft()
-                vis.add(x)
-
-                for nei in neighbors[x]:
-                    if nei in vis:
-                        continue
-                    if (x,nei) in edges:
-                        c+=1
-                    vis.add(nei)
-                    q.append(nei)
-        return c
-
-        
+        print(neighbors)
+        vis = set()
+        result = [0]
+        def dfs(node, neighbors, vis):
+            vis.add(node)
+            for nei, need_to_reverse in neighbors[node]:
+                if nei not in vis:
+                    result[0] += need_to_reverse
+                    dfs(nei, neighbors, vis)
+            return result[0]
+        dfs(0, neighbors, vis)
+        return result[0]
