@@ -1,9 +1,12 @@
 # Definition for a binary tree node.
-# class TreeNode(object):
-#     def __init__(self, x):
-#         self.val = x
-#         self.left = None
-#         self.right = None
+from collections import deque
+
+
+class TreeNode(object):
+    def __init__(self, x):
+        self.val = x
+        self.left = None
+        self.right = None
 
 class Codec:
 
@@ -13,7 +16,9 @@ class Codec:
         :type root: TreeNode
         :rtype: str
         """
+        
         res = []
+        # Define a recursive function to traverse the tree in pre-order
         def dfs(root):
             nonlocal res
             if not root:
@@ -35,14 +40,13 @@ class Codec:
         :rtype: TreeNode
         """
         data = data.split(',')
-        i = 0
+        data = deque(data)
+        # Define a recursive function to reconstruct the tree
         def dfs():
-            nonlocal i
-            if data[i]=='N':
-                i+=1
+            val = data.popleft()
+            if val=='N':
                 return None
-            root = TreeNode(int(data[i]))
-            i+=1
+            root = TreeNode(int(val))
             root.left = dfs()
             root.right = dfs()
             return root
